@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Axiom — Autonomous Revenue Intelligence</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f5f5f0;
+      --paper: #fbfbf8;
+      --ink: #151515;
+      --muted: #777771;
+      --line: #d9d9d2;
+      --soft-line: #e8e8e1;
+      --blue: #5368ff;
+      --blue-soft: #e9ecff;
+      --green: #21895d;
+      --red: #d95b4b;
+      --yellow: #d29b35;
+      --shadow: 0 20px 60px rgba(20, 20, 15, .08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 40px));
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 12px 14px 12px 18px;
+
+      background: rgba(251, 251, 248, .82);
+      backdrop-filter: blur(20px);
+
+      border: 1px solid rgba(30, 30, 20, .09);
+      border-radius: 18px;
+
+      box-shadow: 0 10px 35px rgba(0,0,0,.045);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: end;
+      gap: 3px;
+    }
+
+    .logo-mark span {
+      display: block;
+      background: var(--ink);
+      border-radius: 2px;
+    }
+
+    .logo-mark span:nth-child(1) {
+      height: 45%;
+    }
+
+    .logo-mark span:nth-child(2) {
+      height: 75%;
+    }
+
+    .logo-mark span:nth-child(3) {
+      height: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      color: #5e5e58;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-signin {
+      padding: 10px 14px;
+      color: #55554f;
+      font-size: 14px;
+    }
+
+    .nav-button {
+      padding: 11px 16px;
+
+      border: 0;
+      border-radius: 12px;
+
+      background: var(--ink);
+      color: white;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition:
+        transform .2s ease,
+        background .2s ease;
+    }
+
+    .nav-button:hover {
+      transform: translateY(-1px);
+      background: #30302d;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 30px 80px;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      width: 650px;
+      height: 650px;
+
+      top: 80px;
+      right: -180px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(83,104,255,.13) 0%,
+          rgba(83,104,255,.06) 35%,
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+      margin: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 11px;
+
+      border: 1px solid var(--line);
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.45);
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: #64645e;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+
+      background: #38a970;
+      border-radius: 50%;
+
+      box-shadow: 0 0 0 4px rgba(56,169,112,.1);
+
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% {
+        box-shadow: 0 0 0 3px rgba(56,169,112,.08);
+      }
+
+      50% {
+        box-shadow: 0 0 0 7px rgba(56,169,112,.02);
+      }
+    }
+
+    .hero-copy {
+      max-width: 770px;
+    }
+
+    .hero h1 {
+      margin: 25px 0 24px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(58px, 8vw, 108px);
+      line-height: .91;
+      letter-spacing: -.075em;
+      font-weight: 600;
+    }
+
+    .hero h1 em {
+      color: var(--blue);
+      font-style: normal;
+    }
+
+    .hero-description {
+      max-width: 600px;
+
+      margin: 0;
+
+      font-size: 18px;
+      line-height: 1.7;
+      color: #65655f;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      border-radius: 13px;
+      padding: 14px 19px;
+
+      cursor: pointer;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .primary-button {
+      border: 0;
+      background: var(--ink);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(20,20,20,.1);
+    }
+
+    .secondary-button {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       HERO INTELLIGENCE CARD
+    ========================= */
+
+    .hero-engine {
+      margin-top: 70px;
+
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+
+      border: 1px solid #d5d5ce;
+      border-radius: 28px;
+
+      background: rgba(251,251,248,.92);
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .engine-left {
+      padding: 30px;
+
+      border-right: 1px solid var(--line);
+    }
+
+    .engine-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      padding-bottom: 22px;
+
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    .mono-label {
+      display: block;
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+
+      color: #85857e;
+    }
+
+    .engine-top strong {
+      display: block;
+      margin-top: 6px;
+
+      font-size: 16px;
+    }
+
+    .live-status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+
+      color: var(--green);
+    }
+
+    .signal-user {
+      padding: 26px 0;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .signal-user h3 {
+      margin: 5px 0 0;
+
+      font-size: 25px;
+      letter-spacing: -.04em;
+    }
+
+    .intent-score {
+      text-align: right;
+    }
+
+    .intent-score strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 50px;
+      line-height: 1;
+      letter-spacing: -.07em;
+    }
+
+    .intent-score small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .event-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 72px 12px 1fr auto;
+      align-items: center;
+      gap: 10px;
+
+      padding: 13px 0;
+
+      border-top: 1px solid var(--soft-line);
+
+      font-size: 13px;
+    }
+
+    .event-time {
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      color: #999991;
+    }
+
+    .event-line {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #b9b9b1;
+    }
+
+    .event.warning .event-line {
+      background: var(--red);
+    }
+
+    .event strong {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+    }
+
+    .event.warning strong {
+      color: var(--red);
+    }
+
+    .engine-right {
+      padding: 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .behavior-map {
+      position: relative;
+      min-height: 270px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-ring {
+      width: 205px;
+      height: 205px;
+
+      border: 1px solid #d6d6cf;
+      border-radius: 50%;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-ring::before {
+      content: "";
+
+      position: absolute;
+      inset: 24px;
+
+      border: 1px dashed #d8d8d1;
+      border-radius: 50%;
+    }
+
+    .map-core {
+      width: 105px;
+      height: 105px;
+
+      border-radius: 50%;
+
+      background: var(--blue-soft);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .map-core strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+      letter-spacing: -.06em;
+    }
+
+    .map-core span {
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      color: var(--blue);
+    }
+
+    .orbit {
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      background: var(--ink);
+      border-radius: 50%;
+    }
+
+    .orbit.one {
+      top: 12px;
+      left: 50%;
+    }
+
+    .orbit.two {
+      right: 18px;
+      top: 75px;
+    }
+
+    .orbit.three {
+      bottom: 30px;
+      left: 40px;
+    }
+
+    .orbit.four {
+      left: 20px;
+      top: 60px;
+    }
+
+    .recovery-card {
+      border: 1px solid #d8d8d1;
+      border-radius: 18px;
+
+      padding: 18px;
+
+      background: #f8f8f3;
+    }
+
+    .recovery-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .recovery-card h4 {
+      margin: 7px 0;
+
+      font-size: 17px;
+      letter-spacing: -.03em;
+    }
+
+    .risk {
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      background: #fae8e5;
+      color: var(--red);
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+    }
+
+    .recovery-card p {
+      margin: 0;
+
+      color: #77776f;
+
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .recovery-action {
+      margin-top: 15px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding-top: 13px;
+
+      border-top: 1px solid #dfdfd8;
+    }
+
+    .recovery-action strong {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      color: var(--blue);
+    }
+
+    /* =========================
+       SIGNAL STRIP
+    ========================= */
+
+    .signal-strip {
+      width: min(1180px, calc(100% - 60px));
+
+      margin: 0 auto;
+      padding: 25px 0;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .metric {
+      padding: 0 25px;
+      border-right: 1px solid var(--line);
+    }
+
+    .metric:first-child {
+      padding-left: 0;
+    }
+
+    .metric:last-child {
+      border-right: 0;
+    }
+
+    .metric small {
+      display: block;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      color: #888880;
+    }
+
+    .metric strong {
+      display: block;
+
+      margin-top: 7px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 27px;
+      letter-spacing: -.05em;
+    }
+
+    /* =========================
+       ENGINE STORY
+    ========================= */
+
+    .section {
+      width: min(1180px, calc(100% - 60px));
+      margin: 150px auto 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+    }
+
+    .section-heading h2 {
+      margin: 15px 0 0;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(40px, 5vw, 70px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 500;
+    }
+
+    .section-heading h2 em {
+      color: var(--blue);
+      font-style: normal;
+    }
+
+    .section-heading p {
+      max-width: 600px;
+
+      margin-top: 22px;
+
+      color: #77776f;
+      line-height: 1.7;
+    }
+
+    .engine-flow {
+      margin-top: 65px;
+
+      display: grid;
+      grid-template-columns: 1fr 70px 1fr 70px 1fr;
+      align-items: center;
+    }
+
+    .flow-card {
+      min-height: 270px;
+
+      padding: 28px;
+
+      border: 1px solid var(--line);
+      border-radius: 22px;
+
+      background: var(--paper);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .flow-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-number {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      color: #999990;
+    }
+
+    .flow-card h3 {
+      margin: 50px 0 12px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+      letter-spacing: -.05em;
+    }
+
+    .flow-card p {
+      margin: 0;
+
+      color: #74746d;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .flow-arrow {
+      text-align: center;
+
+      font-size: 28px;
+      color: #aaa9a1;
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .products-section {
+      margin-top: 160px;
+    }
+
+    .product-grid {
+      margin-top: 55px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      min-height: 410px;
+
+      position: relative;
+
+      border-radius: 25px;
+
+      overflow: hidden;
+
+      background: #e8e6df;
+    }
+
+    .product-card:nth-child(2) {
+      background: #dedfe4;
+    }
+
+    .product-card:nth-child(3) {
+      background: #e5dfd3;
+    }
+
+    .product-image {
+      height: 270px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+    }
+
+    .product-object {
+      width: 155px;
+      height: 190px;
+
+      border-radius: 12px;
+
+      background: #222;
+
+      box-shadow:
+        20px 30px 35px rgba(0,0,0,.13);
+
+      transform: rotate(-8deg);
+    }
+
+    .product-card:nth-child(2) .product-object {
+      width: 180px;
+      height: 125px;
+
+      border-radius: 90px 90px 25px 25px;
+
+      background: #f8f6f0;
+
+      transform: rotate(5deg);
+    }
+
+    .product-card:nth-child(3) .product-object {
+      width: 135px;
+      height: 155px;
+
+      border-radius: 45% 45% 30% 30%;
+
+      background: #9b6f55;
+
+      transform: rotate(-4deg);
+    }
+
+    .product-info {
+      padding: 22px;
+
+      background: rgba(255,255,255,.66);
+
+      backdrop-filter: blur(15px);
+    }
+
+    .product-info-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-info h3 {
+      margin: 0;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      letter-spacing: -.04em;
+    }
+
+    .product-info strong {
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+    }
+
+    .product-meta {
+      margin-top: 12px;
+
+      display: flex;
+      gap: 8px;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      color: #77776f;
+    }
+
+    /* =========================
+       RECOVERY SECTION
+    ========================= */
+
+    .recovery-section {
+      margin-top: 160px;
+
+      padding: 70px;
+
+      border-radius: 30px;
+
+      background: #171716;
+      color: white;
+
+      overflow: hidden;
+
+      position: relative;
+    }
+
+    .recovery-section::after {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      right: -150px;
+      bottom: -250px;
+
+      border-radius: 50%;
+
+      background: radial-gradient(
+        circle,
+        rgba(83,104,255,.45),
+        transparent 70%
+      );
+    }
+
+    .recovery-section .mono-label {
+      color: #989892;
+    }
+
+    .recovery-section h2 {
+      max-width: 700px;
+
+      margin: 18px 0;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(42px, 5vw, 70px);
+      line-height: .96;
+      letter-spacing: -.065em;
+    }
+
+    .recovery-section h2 em {
+      color: #8995ff;
+      font-style: normal;
+    }
+
+    .recovery-section > p {
+      max-width: 580px;
+
+      color: #a4a49d;
+      line-height: 1.7;
+    }
+
+    .recovery-flow {
+      margin-top: 60px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .recovery-step {
+      padding: 25px;
+
+      border-top: 1px solid #383834;
+      border-right: 1px solid #383834;
+    }
+
+    .recovery-step:last-child {
+      border-right: 0;
+    }
+
+    .recovery-step span {
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      color: #777771;
+    }
+
+    .recovery-step strong {
+      display: block;
+
+      margin-top: 45px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .final-cta {
+      width: min(1000px, calc(100% - 60px));
+
+      margin: 170px auto;
+
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      margin: 18px auto;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(50px, 7vw, 90px);
+      line-height: .92;
+      letter-spacing: -.075em;
+    }
+
+    .final-cta h2 em {
+      color: var(--blue);
+      font-style: normal;
+    }
+
+    .final-cta p {
+      max-width: 550px;
+
+      margin: 25px auto 30px;
+
+      color: #77776f;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      width: min(1180px, calc(100% - 60px));
+
+      margin: 0 auto;
+
+      padding: 25px 0 35px;
+
+      border-top: 1px solid var(--line);
+
+      display: flex;
+      justify-content: space-between;
+
+      color: #85857e;
+
+      font-size: 12px;
+    }
+
+    /* =========================
+       WORKSPACE
+    ========================= */
+
+    #workspace {
+      display: none;
+      min-height: 100vh;
+      background: #f3f3ee;
+    }
+
+    .workspace-shell {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      min-height: 100vh;
+    }
+
+    .workspace-sidebar {
+      padding: 25px 18px;
+
+      border-right: 1px solid var(--line);
+
+      background: #f8f8f4;
+    }
+
+    .workspace-logo {
+      margin: 3px 10px 45px;
+    }
+
+    .workspace-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .workspace-nav button {
+      width: 100%;
+
+      padding: 12px 13px;
+
+      border: 0;
+      border-radius: 10px;
+
+      background: transparent;
+
+      text-align: left;
+
+      color: #77776f;
+
+      cursor: pointer;
+    }
+
+    .workspace-nav button.active,
+    .workspace-nav button:hover {
+      background: #e8e9f7;
+      color: var(--ink);
+    }
+
+    .workspace-main {
+      padding: 35px 45px;
+    }
+
+    .workspace-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 45px;
+    }
+
+    .workspace-top h1 {
+      margin: 0;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 42px;
+      letter-spacing: -.06em;
+    }
+
+    .workspace-top p {
+      margin: 8px 0 0;
+
+      color: #81817a;
+    }
+
+    .back-button {
+      border: 1px solid var(--line);
+      background: transparent;
+
+      border-radius: 10px;
+
+      padding: 10px 14px;
+
+      cursor: pointer;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .dash-card {
+      padding: 22px;
+
+      border: 1px solid var(--line);
+      border-radius: 18px;
+
+      background: var(--paper);
+    }
+
+    .dash-card small {
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      color: #85857d;
+    }
+
+    .dash-card strong {
+      display: block;
+
+      margin-top: 10px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 28px;
+      letter-spacing: -.05em;
+    }
+
+    .workspace-content-grid {
+      margin-top: 20px;
+
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+    }
+
+    .workspace-panel {
+      padding: 25px;
+
+      border: 1px solid var(--line);
+      border-radius: 20px;
+
+      background: var(--paper);
+    }
+
+    .workspace-panel h2 {
+      margin: 0 0 20px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      letter-spacing: -.04em;
+    }
+
+    .live-session {
+      padding: 15px 0;
+
+      border-top: 1px solid var(--soft-line);
+
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    .live-session strong {
+      font-size: 13px;
+    }
+
+    .live-session span {
+      display: block;
+
+      margin-top: 4px;
+
+      color: #888880;
+
+      font-size: 11px;
+    }
+
+    .session-score {
+      font-family: "DM Mono", monospace;
+      color: var(--blue);
+      font-size: 12px;
+    }
+
+    .workspace-opportunity {
+      padding: 20px;
+
+      border-radius: 15px;
+
+      background: #f0f1ff;
+
+      margin-bottom: 12px;
+    }
+
+    .workspace-opportunity:last-child {
+      margin-bottom: 0;
+    }
+
+    .workspace-opportunity strong {
+      display: block;
+
+      margin-top: 6px;
+
+      font-size: 15px;
+    }
+
+    .workspace-opportunity p {
+      margin: 7px 0 0;
+
+      color: #77776f;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero-engine {
+        grid-template-columns: 1fr;
+      }
+
+      .engine-left {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .signal-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      .metric:nth-child(2) {
+        border-right: 0;
+      }
+
+      .metric:nth-child(3),
+      .metric:nth-child(4) {
+        padding-top: 20px;
+      }
+
+      .engine-flow {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recovery-flow {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .recovery-step:nth-child(2) {
+        border-right: 0;
+      }
+
+      .workspace-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .workspace-sidebar {
+        display: none;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .workspace-content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        width: calc(100% - 20px);
+      }
+
+      .nav-signin {
+        display: none;
+      }
+
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-engine {
+        border-radius: 18px;
+      }
+
+      .engine-left,
+      .engine-right {
+        padding: 20px;
+      }
+
+      .signal-strip,
+      .section,
+      .final-cta,
+      footer {
+        width: calc(100% - 36px);
+      }
+
+      .signal-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metric {
+        padding-left: 0;
+      }
+
+      .recovery-section {
+        padding: 30px 22px;
+        border-radius: 20px;
+      }
+
+      .recovery-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .recovery-step {
+        border-right: 0;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .workspace-main {
+        padding: 25px 18px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       LANDING PAGE
+  ============================================================= -->
+
+  <div id="landing">
+
+    <nav class="nav">
+
+      <a href="#" class="logo">
+        <span class="logo-mark">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        AXIOM
+      </a>
+
+      <div class="nav-links">
+        <a href="#engine">How it works</a>
+        <a href="#signals">Signals</a>
+        <a href="#recovery">Recovery</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#workspace" class="nav-signin">Sign in</a>
+
+        <button class="nav-button" onclick="openWorkspace()">
+          Open Axiom
+        </button>
+      </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <main class="hero">
+
+      <div class="hero-inner">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow">
+            <span class="live-dot"></span>
+            AUTONOMOUS REVENUE INTELLIGENCE
+          </div>
+
+          <h1>
+            Your store is
+            <em>talking.</em>
+            Axiom listens.
+          </h1>
+
+          <p class="hero-description">
+            Axiom watches the tiny signals behind every shopper —
+            searches, product views, watchlists, cart hesitation and
+            repeated price checks — then turns those signals into
+            autonomous revenue recovery.
+          </p>
+
+          <div class="hero-actions">
+
+            <button
+              class="primary-button"
+              onclick="openWorkspace()"
+            >
+              Enter Axiom →
+            </button>
+
+            <a
+              href="#engine"
+              class="secondary-button"
+            >
+              See how it works
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- LIVE ENGINE -->
+
+        <section class="hero-engine">
+
+          <div class="engine-left">
+
+            <div class="engine-top">
+
+              <div>
+                <span class="mono-label">
+                  AXIOM ENGINE
+                </span>
+
+                <strong>
+                  Live shopper intelligence
+                </strong>
+              </div>
+
+              <div class="live-status">
+                <span class="live-dot"></span>
+                LIVE
+              </div>
+
+            </div>
+
+
+            <div class="signal-user">
+
+              <div>
+                <span class="mono-label">
+                  SHOPPER #4821
+                </span>
+
+                <h3>
+                  High-intent session
+                </h3>
+              </div>
+
+              <div class="intent-score">
+
+                <span class="mono-label">
+                  INTENT
+                </span>
+
+                <strong id="intentScore">
+                  91
+                </strong>
+
+                <small>
+                  /100
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="event-list">
+
+              <div class="event">
+
+                <span class="event-time">
+                  22:41:08
+                </span>
+
+                <span class="event-line"></span>
+
+                <span>
+                  searched
+                </span>
+
+                <strong>
+                  "black jeans"
+                </strong>
+
+              </div>
+
+
+              <div class="event">
+
+                <span class="event-time">
+                  22:41:31
+                </span>
+
+                <span class="event-line"></span>
+
+                <span>
+                  viewed product
+                </span>
+
+                <strong>
+                  4×
+                </strong>
+
+              </div>
+
+
+              <div class="event">
+
+                <span class="event-time">
+                  22:42:04
+                </span>
+
+                <span class="event-line"></span>
+
+                <span>
+                  added to cart
+                </span>
+
+                <strong>
+                  ₹4,398
+                </strong>
+
+              </div>
+
+
+              <div class="event">
+
+                <span class="event-time">
+                  22:42:51
+                </span>
+
+                <span class="event-line"></span>
+
+                <span>
+                  checked price
+                </span>
+
+                <strong>
+                  2×
+                </strong>
+
+              </div>
+
+
+              <div class="event warning">
+
+                <span class="event-time">
+                  22:43:17
+                </span>
+
+                <span class="event-line"></span>
+
+                <span>
+                  hesitation detected
+                </span>
+
+                <strong>
+                  HIGH
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="engine-right">
+
+            <div class="behavior-map">
+
+              <div class="map-ring">
+
+                <span class="orbit one"></span>
+                <span class="orbit two"></span>
+                <span class="orbit three"></span>
+                <span class="orbit four"></span>
+
+                <div class="map-core">
+
+                  <span>
+                    INTENT
+                  </span>
+
+                  <strong>
+                    91%
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="recovery-card">
+
+              <div class="recovery-card-top">
+
+                <div>
+
+                  <span class="mono-label">
+                    AXIOM DETECTED
+                  </span>
+
+                  <h4>
+                    Recovery opportunity
+                  </h4>
+
+                </div>
+
+                <span class="risk">
+                  HIGH RISK
+                </span>
+
+              </div>
+
+              <p>
+                Shopper is showing repeated price sensitivity
+                after adding ₹4,398 to cart.
+              </p>
+
+              <div class="recovery-action">
+
+                <span class="mono-label">
+                  RECOMMENDED ACTION
+                </span>
+
+                <strong>
+                  PRICE DROP → NUDGE
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+
+    <!-- LIVE NUMBERS -->
+
+    <section id="signals" class="signal-strip">
+
+      <div class="metric">
+        <small>ACTIVE SESSIONS</small>
+        <strong>1,284</strong>
+      </div>
+
+      <div class="metric">
+        <small>HIGH INTENT</small>
+        <strong>87</strong>
+      </div>
+
+      <div class="metric">
+        <small>REVENUE AT RISK</small>
+        <strong>₹42.8K</strong>
+      </div>
+
+      <div class="metric">
+        <small>INTERVENTIONS</small>
+        <strong>14</strong>
+      </div>
+
+    </section>
+
+
+    <!-- ENGINE -->
+
+    <section id="engine" class="section">
+
+      <div class="section-heading">
+
+        <span class="mono-label">
+          THE AXIOM ENGINE
+        </span>
+
+        <h2>
+          From a tiny shopper signal
+          <em>to recovered revenue.</em>
+        </h2>
+
+        <p>
+          Axiom doesn't ask your team to stare at another dashboard.
+          It continuously turns behavioral events into opportunities
+          that can actually be acted upon.
+        </p>
+
+      </div>
+
+
+      <div class="engine-flow">
+
+        <article class="flow-card">
+
+          <span class="flow-number">
+            01 / WATCH
+          </span>
+
+          <h3>
+            Observe
+          </h3>
+
+          <p>
+            Searches, product views, watchlists, cart additions,
+            revisits, price checks and hesitation loops become
+            real-time behavioral signals.
+          </p>
+
+        </article>
+
+
+        <div class="flow-arrow">
+          →
+        </div>
+
+
+        <article class="flow-card">
+
+          <span class="flow-number">
+            02 / UNDERSTAND
+          </span>
+
+          <h3>
+            Score intent
+          </h3>
+
+          <p>
+            Axiom combines user behavior, product context,
+            price sensitivity and market signals to calculate
+            purchase intent and drop-off risk.
+          </p>
+
+        </article>
+
+
+        <div class="flow-arrow">
+          →
+        </div>
+
+
+        <article class="flow-card">
+
+          <span class="flow-number">
+            03 / ACT
+          </span>
+
+          <h3>
+            Recover
+          </h3>
+
+          <p>
+            When a high-value opportunity appears, Axiom can
+            trigger a targeted nudge, webhook or re-engagement
+            campaign automatically.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section class="section products-section">
+
+      <div class="section-heading">
+
+        <span class="mono-label">
+          LIVE STORE
+        </span>
+
+        <h2>
+          Axiom sees the
+          <em>products behind the behavior.</em>
+        </h2>
+
+      </div>
+
+
+      <div class="product-grid">
+
+        <article class="product-card">
+
+          <div class="product-image">
+            <div class="product-object"></div>
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-info-top">
+
+              <h3>
+                Black denim
+              </h3>
+
+              <strong>
+                ₹2,499
+              </strong>
+
+            </div>
+
+            <div class="product-meta">
+              <span>34 WATCHING</span>
+              <span>6 CARTS</span>
+              <span>↓ PRICE</span>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="product-card">
+
+          <div class="product-image">
+            <div class="product-object"></div>
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-info-top">
+
+              <h3>
+                Ceramic mug
+              </h3>
+
+              <strong>
+                ₹899
+              </strong>
+
+            </div>
+
+            <div class="product-meta">
+              <span>12 WATCHING</span>
+              <span>4 CARTS</span>
+              <span>8 LEFT</span>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="product-card">
+
+          <div class="product-image">
+            <div class="product-object"></div>
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-info-top">
+
+              <h3>
+                Skin serum
+              </h3>
+
+              <strong>
+                ₹749
+              </strong>
+
+            </div>
+
+            <div class="product-meta">
+              <span>27 WATCHING</span>
+              <span>11 CARTS</span>
+              <span>↓ PRICE</span>
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- RECOVERY -->
+
+    <section id="recovery" class="section">
+
+      <div class="recovery-section">
+
+        <span class="mono-label">
+          AUTONOMOUS RECOVERY
+        </span>
+
+        <h2>
+          Don't just know
+          someone is leaving.
+          <em>Do something.</em>
+        </h2>
+
+        <p>
+          Axiom connects behavioral intent with live market changes.
+          When the right opportunity appears, the system can move
+          without waiting for someone to manually inspect a dashboard.
+        </p>
+
+
+        <div class="recovery-flow">
+
+          <div class="recovery-step">
+
+            <span>
+              01
+            </span>
+
+            <strong>
+              Detect hesitation
+            </strong>
+
+          </div>
+
+
+          <div class="recovery-step">
+
+            <span>
+              02
+            </span>
+
+            <strong>
+              Check market
+            </strong>
+
+          </div>
+
+
+          <div class="recovery-step">
+
+            <span>
+              03
+            </span>
+
+            <strong>
+              Find opportunity
+            </strong>
+
+          </div>
+
+
+          <div class="recovery-step">
+
+            <span>
+              04
+            </span>
+
+            <strong>
+              Trigger recovery
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL CTA -->
+
+    <section class="final-cta">
+
+      <span class="mono-label">
+        AXIOM / AUTONOMOUS REVENUE INTELLIGENCE
+      </span>
+
+      <h2>
+        The store is moving.
+        <em>Watch it happen.</em>
+      </h2>
+
+      <p>
+        Explore the live intelligence workspace and see how
+        shopper behavior becomes actionable revenue opportunities.
+      </p>
+
+      <button
+        class="primary-button"
+        onclick="openWorkspace()"
+      >
+        Enter Axiom →
+      </button>
+
+    </section>
+
+
+    <footer>
+
+      <a href="#" class="logo">
+
+        <span class="logo-mark">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        AXIOM
+
+      </a>
+
+      <span>
+        Autonomous Revenue Intelligence
+      </span>
+
+    </footer>
+
+  </div>
+
+
+  <!-- ============================================================
+       WORKSPACE
+  ============================================================= -->
+
+  <div id="workspace">
+
+    <div class="workspace-shell">
+
+      <aside class="workspace-sidebar">
+
+        <div class="workspace-logo logo">
+
+          <span class="logo-mark">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+
+          AXIOM
+
+        </div>
+
+
+        <nav class="workspace-nav">
+
+          <button class="active">
+            Overview
+          </button>
+
+          <button>
+            Live Store
+          </button>
+
+          <button>
+            Intent Engine
+          </button>
+
+          <button>
+            Recovery
+          </button>
+
+          <button>
+            Market
+          </button>
+
+        </nav>
+
+      </aside>
+
+
+      <main class="workspace-main">
+
+        <div class="workspace-top">
+
+          <div>
+
+            <span class="mono-label">
+              AXIOM / LIVE WORKSPACE
+            </span>
+
+            <h1>
+              Overview
+            </h1>
+
+            <p>
+              A live view of shopper intent and revenue opportunities.
+            </p>
+
+          </div>
+
+          <button
+            class="back-button"
+            onclick="closeWorkspace()"
+          >
+            ← Landing page
+          </button>
+
+        </div>
+
+
+        <section class="dashboard-grid">
+
+          <div class="dash-card">
+            <small>ACTIVE SESSIONS</small>
+            <strong>1,284</strong>
+          </div>
+
+          <div class="dash-card">
+            <small>HIGH INTENT</small>
+            <strong>87</strong>
+          </div>
+
+          <div class="dash-card">
+            <small>REVENUE AT RISK</small>
+            <strong>₹42.8K</strong>
+          </div>
+
+          <div class="dash-card">
+            <small>INTERVENTIONS</small>
+            <strong>14</strong>
+          </div>
+
+        </section>
+
+
+        <section class="workspace-content-grid">
+
+          <div class="workspace-panel">
+
+            <h2>
+              Live behavior
+            </h2>
+
+
+            <div class="live-session">
+
+              <div>
+                <strong>
+                  #4821 · Black jeans
+                </strong>
+
+                <span>
+                  viewed 4× · cart added · price checked 2×
+                </span>
+              </div>
+
+              <div class="session-score">
+                91 INTENT
+              </div>
+
+            </div>
+
+
+            <div class="live-session">
+
+              <div>
+                <strong>
+                  #3912 · Cosmetics
+                </strong>
+
+                <span>
+                  watchlisted · returned after 18m · price sensitivity ↑
+                </span>
+              </div>
+
+              <div class="session-score">
+                86 INTENT
+              </div>
+
+            </div>
+
+
+            <div class="live-session">
+
+              <div>
+                <strong>
+                  #7719 · Ceramic mug
+                </strong>
+
+                <span>
+                  searched ×2 · viewed 3× · stock checked
+                </span>
+              </div>
+
+              <div class="session-score">
+                79 INTENT
+              </div>
+
+            </div>
+
+
+            <div class="live-session">
+
+              <div>
+                <strong>
+                  #2204 · Denim
+                </strong>
+
+                <span>
+                  returned · compared two products · cart abandoned
+                </span>
+              </div>
+
+              <div class="session-score">
+                73 INTENT
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="workspace-panel">
+
+            <h2>
+              Recovery opportunities
+            </h2>
+
+
+            <div class="workspace-opportunity">
+
+              <span class="mono-label">
+                HIGH INTENT · #4821
+              </span>
+
+              <strong>
+                Price-drop nudge
+              </strong>
+
+              <p>
+                Cart value ₹4,398. Price sensitivity detected.
+                Product price dropped 12%.
+              </p>
+
+            </div>
+
+
+            <div class="workspace-opportunity">
+
+              <span class="mono-label">
+                HIGH INTENT · #3912
+              </span>
+
+              <strong>
+                Re-engagement
+              </strong>
+
+              <p>
+                Shopper returned after repeated product visits.
+                Recovery window is open.
+              </p>
+
+            </div>
+
+
+            <div class="workspace-opportunity">
+
+              <span class="mono-label">
+                MARKET SIGNAL
+              </span>
+
+              <strong>
+                Inventory shift
+              </strong>
+
+              <p>
+                Ceramic mug inventory dropped below the configured
+                threshold while watch activity increased.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================= -->
+
+  <script>
+
+    const landing = document.getElementById("landing");
+    const workspace = document.getElementById("workspace");
+
+    function openWorkspace() {
+
+      landing.style.display = "none";
+      workspace.style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+      history.pushState(
+        {},
+        "",
+        "#workspace"
+      );
+    }
+
+
+    function closeWorkspace() {
+
+      workspace.style.display = "none";
+      landing.style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+      history.pushState(
+        {},
+        "",
+        "#"
+      );
+    }
+
+
+    function updateIntent() {
+
+      const score = document.getElementById("intentScore");
+
+      if (!score) return;
+
+      const values = [89, 91, 92, 90, 94, 91];
+
+      let index = 0;
+
+      setInterval(() => {
+
+        score.textContent = values[index];
+
+        index++;
+
+        if (index >= values.length) {
+          index = 0;
+        }
+
+      }, 2200);
+
+    }
+
+
+    function setupNavigation() {
+
+      document.querySelectorAll(".workspace-nav button")
+        .forEach(button => {
+
+          button.addEventListener("click", () => {
+
+            document
+              .querySelectorAll(".workspace-nav button")
+              .forEach(item => item.classList.remove("active"));
+
+            button.classList.add("active");
+
+          });
+
+        });
+
+    }
+
+
+    function handleInitialRoute() {
+
+      if (window.location.hash === "#workspace") {
+
+        landing.style.display = "none";
+        workspace.style.display = "block";
+
+      } else {
+
+        landing.style.display = "block";
+        workspace.style.display = "none";
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      "hashchange",
+      handleInitialRoute
+    );
+
+
+    updateIntent();
+    setupNavigation();
+    handleInitialRoute();
+
+  </script>
+
+</body>
+</html>

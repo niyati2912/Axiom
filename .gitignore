@@ -1,0 +1,65 @@
+# ============================================================
+# AXIOM — Git Ignore Configuration
+# ============================================================
+
+# Environment & Secrets (NEVER commit real credentials)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
+!.env.example
+
+# Node.js & Next.js Build Artifacts
+node_modules/
+.next/
+out/
+build/
+dist/
+.turbo/
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python & FastAPI Runtime Artifacts
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local Databases & Runtime State
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+backend/axiom_engine.db
+
+# Legacy ML / Scratch Artifacts
+churn_model.json
+*.png
+!docs/assets/*.png
+!docs/assets/*.svg
+
+# IDE & OS Files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log

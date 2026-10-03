@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="100%" height="100%">
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#3B52F6"/>
+    </marker>
+    <marker id="arrowInk" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#141413"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1F8A5C"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="540" rx="20" fill="#F5F5F0" stroke="#DCDCD3" stroke-width="2"/>
+
+  <!-- Header -->
+  <text x="40" y="42" font-family="monospace" font-size="11" font-weight="700" fill="#3B52F6" letter-spacing="1.5">SYSTEM ARCHITECTURE TOPOLOGY · AXIOM v2.0</text>
+  <text x="40" y="70" font-family="system-ui, sans-serif" font-size="24" font-weight="800" fill="#141413">Event-Driven Autonomous Commerce Intelligence Pipeline</text>
+
+  <!-- COLUMN 1: STOREFRONT TELEMETRY -->
+  <g transform="translate(40, 100)">
+    <rect width="240" height="395" rx="16" fill="#FBFBF8" stroke="#DCDCD3" stroke-width="1.5"/>
+    <text x="20" y="30" font-family="monospace" font-size="11" font-weight="700" fill="#6E6E68">01 · TELEMETRY INGESTION</text>
+    <text x="20" y="52" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#141413">Shopper Micro-Signals</text>
+
+    <g transform="translate(16, 72)">
+      <rect width="208" height="44" rx="8" fill="#EFEFE8"/>
+      <text x="12" y="19" font-family="monospace" font-size="10" font-weight="700" fill="#3B52F6">SEARCH &amp; DISCOVERY</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="12" fill="#141413">Repeated queries · "black jeans"</text>
+    </g>
+    <g transform="translate(16, 126)">
+      <rect width="208" height="44" rx="8" fill="#EFEFE8"/>
+      <text x="12" y="19" font-family="monospace" font-size="10" font-weight="700" fill="#3B52F6">PRODUCT AFFINITY</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="12" fill="#141413">4× Product Revisits · Dwell Time</text>
+    </g>
+    <g transform="translate(16, 180)">
+      <rect width="208" height="44" rx="8" fill="#EFEFE8"/>
+      <text x="12" y="19" font-family="monospace" font-size="10" font-weight="700" fill="#3B52F6">CART &amp; WATCHLIST</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="12" fill="#141413">Add/Remove · Watchlist Saves</text>
+    </g>
+    <g transform="translate(16, 234)">
+      <rect width="208" height="44" rx="8" fill="#FCECEB" stroke="#D6453A" stroke-opacity="0.35"/>
+      <text x="12" y="19" font-family="monospace" font-size="10" font-weight="700" fill="#D6453A">FRICTION &amp; HESITATION</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="12" fill="#141413">3× Price Checks · Left Cart</text>
+    </g>
+    <g transform="translate(16, 288)">
+      <rect width="208" height="44" rx="8" fill="#E9ECFF" stroke="#3B52F6" stroke-opacity="0.35"/>
+      <text x="12" y="19" font-family="monospace" font-size="10" font-weight="700" fill="#3B52F6">MARKET FEED</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="12" fill="#141413">Price Drop (-11.3%) · Low Stock</text>
+    </g>
+    <text x="20" y="368" font-family="monospace" font-size="10" fill="#6E6E68">POST /api/events/ingest</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="280" y1="295" x2="322" y2="295" stroke="#141413" stroke-width="2" marker-end="url(#arrowInk)"/>
+
+  <!-- COLUMN 2: FASTAPI AUTONOMOUS ENGINE -->
+  <g transform="translate(330, 100)">
+    <rect width="530" height="395" rx="16" fill="#FBFBF8" stroke="#141413" stroke-width="1.8"/>
+    <text x="24" y="30" font-family="monospace" font-size="11" font-weight="700" fill="#3B52F6">02 · FASTAPI AUTONOMOUS ENGINE (backend/)</text>
+    <text x="24" y="52" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#141413">Real-Time Normalization, Scoring &amp; Opportunity Synthesis</text>
+
+    <!-- Top Sub-boxes -->
+    <g transform="translate(20, 72)">
+      <rect width="235" height="125" rx="12" fill="#E9ECFF" stroke="#3B52F6" stroke-width="1.2"/>
+      <text x="14" y="24" font-family="monospace" font-size="10" font-weight="700" fill="#3B52F6">INTENT ENGINE (intent_engine.py)</text>
+      <text x="14" y="46" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#141413">Behavioral Feature Scorer</text>
+      <text x="14" y="68" font-family="monospace" font-size="11" fill="#141413">• purchaseIntentScore: 91%</text>
+      <text x="14" y="86" font-family="monospace" font-size="11" fill="#D6453A">• dropOffRiskScore: 78%</text>
+      <text x="14" y="104" font-family="monospace" font-size="11" fill="#6E6E68">• confidence: 94% + Breakdown</text>
+    </g>
+
+    <g transform="translate(275, 72)">
+      <rect width="235" height="125" rx="12" fill="#EFEFE8" stroke="#DCDCD3" stroke-width="1.2"/>
+      <text x="14" y="24" font-family="monospace" font-size="10" font-weight="700" fill="#141413">MARKET MONITOR (market_monitor.py)</text>
+      <text x="14" y="46" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#141413">Catalog &amp; Stock Radar</text>
+      <text x="14" y="68" font-family="monospace" font-size="11" fill="#141413">• Price Drop: ₹4,398 → ₹3,899</text>
+      <text x="14" y="86" font-family="monospace" font-size="11" fill="#141413">• Inventory: 12 Mugs Left</text>
+      <text x="14" y="104" font-family="monospace" font-size="11" fill="#6E6E68">• Competitor Price Delta</text>
+    </g>
+
+    <!-- Middle Opportunity Detector -->
+    <g transform="translate(20, 215)">
+      <rect width="490" height="92" rx="12" fill="#141413"/>
+      <text x="18" y="25" font-family="monospace" font-size="10" font-weight="700" fill="#93C5FD">OPPORTUNITY DETECTOR &amp; ACTION GENERATOR (opportunity_detector.py)</text>
+      <text x="18" y="48" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">High Intent (91%) + Price Drop (-11.3%) + Hesitation Loop = RECOVERY OPPORTUNITY</text>
+      <text x="18" y="72" font-family="monospace" font-size="11" fill="#A7F3D0">→ Dispatches In-App Nudge, POST /webhooks/recovery, Re-Engagement &amp; Campaigns</text>
+    </g>
+
+    <!-- Bottom Persistence Store -->
+    <g transform="translate(20, 322)">
+      <rect width="490" height="54" rx="10" fill="#EFEFE8" stroke="#DCDCD3"/>
+      <text x="16" y="22" font-family="monospace" font-size="10" font-weight="700" fill="#6E6E68">STATE &amp; PERSISTENCE LAYER (store.py + persistence.py)</text>
+      <text x="16" y="40" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#141413">Thread-Safe In-Memory Store + SQLite Event Ledger (axiom_engine.db) + PostgreSQL Ready</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="860" y1="230" x2="902" y2="230" stroke="#3B52F6" stroke-width="2.2" marker-end="url(#arrowBlue)"/>
+  <line x1="860" y1="340" x2="902" y2="340" stroke="#1F8A5C" stroke-width="2.2" marker-end="url(#arrowGreen)"/>
+
+  <!-- COLUMN 3: NEXT.JS 14 + 3D FRONTEND -->
+  <g transform="translate(910, 100)">
+    <rect width="250" height="395" rx="16" fill="#FBFBF8" stroke="#DCDCD3" stroke-width="1.5"/>
+    <text x="20" y="30" font-family="monospace" font-size="11" font-weight="700" fill="#3B52F6">03 · NEXT.JS 14 + 3D UI</text>
+    <text x="20" y="52" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#141413">Editorial &amp; Command UI</text>
+
+    <g transform="translate(16, 72)">
+      <rect width="218" height="68" rx="10" fill="#E9ECFF" stroke="#3B52F6" stroke-opacity="0.4"/>
+      <text x="12" y="22" font-family="monospace" font-size="10" font-weight="700" fill="#3B52F6">THREE.JS WEBGL 3D</text>
+      <text x="12" y="40" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#141413">CommerceNetwork3D.tsx</text>
+      <text x="12" y="56" font-family="monospace" font-size="10" fill="#6E6E68">9 Orbital Nodes + Bezier Pulses</text>
+    </g>
+
+    <g transform="translate(16, 154)">
+      <rect width="218" height="68" rx="10" fill="#EFEFE8"/>
+      <text x="12" y="22" font-family="monospace" font-size="10" font-weight="700" fill="#141413">7-PART EDITORIAL STORY</text>
+      <text x="12" y="40" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#141413">LandingView.tsx</text>
+      <text x="12" y="56" font-family="monospace" font-size="10" fill="#6E6E68">Interactive #4821 Session Trace</text>
+    </g>
+
+    <g transform="translate(16, 236)">
+      <rect width="218" height="68" rx="10" fill="#EFEFE8"/>
+      <text x="12" y="22" font-family="monospace" font-size="10" font-weight="700" fill="#141413">12-VIEW COMMAND CENTER</text>
+      <text x="12" y="40" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#141413">CommandCenter.tsx</text>
+      <text x="12" y="56" font-family="monospace" font-size="10" fill="#6E6E68">Live Signals · [ ACTIVATE ]</text>
+    </g>
+
+    <g transform="translate(16, 318)">
+      <rect width="218" height="58" rx="10" fill="#E5F5ED" stroke="#1F8A5C" stroke-opacity="0.4"/>
+      <text x="12" y="22" font-family="monospace" font-size="10" font-weight="700" fill="#1F8A5C">REAL-TIME TRANSPORT</text>
+      <text x="12" y="42" font-family="monospace" font-size="11" font-weight="700" fill="#141413">SSE (/api/stream) + WS (/ws)</text>
+    </g>
+  </g>
+</svg>

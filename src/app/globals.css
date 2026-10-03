@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f5f0;
+  --paper: #fbfbf8;
+  --ink: #141413;
+  --muted: #6e6e68;
+  --line: #dcdcd3;
+  --blue: #3b52f6;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #f5f5f0;
+  color: #141413;
+}
+
+body {
+  background-color: #f5f5f0;
+  color: #141413;
+  font-family: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}

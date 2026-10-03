@@ -1,0 +1,678 @@
+/* ============================================================
+   AXIOM — NEW PRODUCT LANDING VISUAL SYSTEM
+   Keep existing site.css above this block.
+   ============================================================ */
+
+:root {
+  --axiom-bg: #f4f3ee;
+  --axiom-paper: #fbfaf6;
+  --axiom-ink: #171714;
+  --axiom-muted: #77776f;
+  --axiom-line: #d9d8d0;
+  --axiom-soft: #e9e8e1;
+
+  --axiom-blue: #5266f5;
+  --axiom-blue-soft: #e8ebff;
+
+  --axiom-green: #23865b;
+  --axiom-red: #c9574a;
+}
+
+/* ------------------------------------------------------------
+   LANDING ROOT
+------------------------------------------------------------ */
+
+.lp {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 82% 12%,
+      rgba(82, 102, 245, .09),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 5% 65%,
+      rgba(0, 0, 0, .035),
+      transparent 30%
+    ),
+    var(--axiom-bg);
+
+  color: var(--axiom-ink);
+
+  font-family: Inter, sans-serif;
+}
+
+
+/* ------------------------------------------------------------
+   NAV
+------------------------------------------------------------ */
+
+.lp-nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+
+  width: min(1160px, calc(100% - 36px));
+
+  transform: translateX(-50%);
+
+  padding: 10px 12px 10px 18px;
+
+  border: 1px solid rgba(23, 23, 20, .1);
+  border-radius: 16px;
+
+  background: rgba(251, 250, 246, .82);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 12px 35px rgba(20, 20, 15, .055);
+
+  z-index: 100;
+
+  transition:
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+.lp-nav.stuck {
+  background: rgba(251, 250, 246, .94);
+
+  box-shadow:
+    0 14px 45px rgba(20, 20, 15, .08);
+}
+
+.lp-nav .brand,
+.lp-nav .logo,
+.lp-nav a:first-child {
+  color: var(--axiom-ink);
+}
+
+.lp-links a {
+  color: #686861;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.lp-links a:hover {
+  color: var(--axiom-ink);
+}
+
+.lp-ghost {
+  color: var(--axiom-ink);
+}
+
+
+/* ------------------------------------------------------------
+   HERO
+------------------------------------------------------------ */
+
+.lp-hero-wrap {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.28),
+      transparent 65%
+    );
+
+  overflow: hidden;
+}
+
+.lp-waves {
+  opacity: .18;
+
+  filter:
+    grayscale(1)
+    contrast(.7);
+}
+
+.lp-hero {
+  max-width: 1180px;
+
+  min-height: 100vh;
+
+  padding:
+    145px
+    30px
+    80px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, .92fr)
+    minmax(420px, 1.08fr);
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+/* ------------------------------------------------------------
+   HERO COPY
+------------------------------------------------------------ */
+
+.lp-pill {
+  border: 1px solid var(--axiom-line);
+
+  background: rgba(255,255,255,.55);
+
+  color: #686861;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: .09em;
+
+  text-transform: uppercase;
+}
+
+.lp-pill .live-dot {
+  background: var(--axiom-green);
+
+  box-shadow:
+    0 0 0 4px rgba(35,134,91,.1);
+}
+
+.lp-hero h1 {
+  max-width: 700px;
+
+  margin: 25px 0 25px;
+
+  color: var(--axiom-ink);
+
+  font-family: Inter, sans-serif;
+
+  font-size:
+    clamp(58px, 7vw, 96px);
+
+  font-weight: 700;
+
+  line-height: .91;
+
+  letter-spacing: -.075em;
+}
+
+.lp-hero h1 em {
+  background: none;
+
+  color: var(--axiom-blue);
+
+  -webkit-text-fill-color: initial;
+}
+
+.lp-hero p {
+  max-width: 570px;
+
+  color: #6d6d66;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+.lp-cta {
+  margin-top: 30px;
+}
+
+.lp-cta .btn {
+  background: var(--axiom-ink);
+
+  border: 1px solid var(--axiom-ink);
+
+  color: white;
+
+  box-shadow:
+    0 12px 28px rgba(23,23,20,.12);
+
+  border-radius: 12px;
+}
+
+.lp-cta .btn.secondary,
+.lp-cta .btn:not(:first-child) {
+  background: transparent;
+
+  color: var(--axiom-ink);
+
+  border-color: var(--axiom-line);
+
+  box-shadow: none;
+}
+
+.lp-flow {
+  margin-top: 28px;
+
+  color: #898981;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: .12em;
+}
+
+.lp-flow i {
+  background: var(--axiom-line);
+}
+
+
+/* ------------------------------------------------------------
+   HERO MINI PRODUCT WINDOW
+------------------------------------------------------------ */
+
+.lp-mini {
+  position: relative;
+
+  border:
+    1px solid rgba(23,23,20,.12);
+
+  border-radius: 24px;
+
+  background:
+    rgba(251,250,246,.96);
+
+  box-shadow:
+    0 35px 80px rgba(20,20,15,.11);
+
+  overflow: hidden;
+
+  transform:
+    perspective(1200px)
+    rotateY(-5deg)
+    rotateX(2deg);
+
+  animation:
+    axiomFloat 8s ease-in-out infinite;
+}
+
+.lp-mini:hover {
+  transform:
+    perspective(1200px)
+    rotateY(0)
+    rotateX(0)
+    translateY(-4px);
+}
+
+@keyframes axiomFloat {
+  0%,100% {
+    transform:
+      perspective(1200px)
+      rotateY(-5deg)
+      rotateX(2deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      perspective(1200px)
+      rotateY(-5deg)
+      rotateX(2deg)
+      translateY(-9px);
+  }
+}
+
+.lp-mini-top {
+  background: #f8f7f2;
+
+  border-bottom:
+    1px solid var(--axiom-soft);
+
+  color: var(--axiom-ink);
+}
+
+.lp-mini-top em {
+  color: var(--axiom-muted);
+}
+
+.lp-dots i {
+  background: #c8c7bf;
+}
+
+.lp-mini-kpis {
+  background: var(--axiom-soft);
+}
+
+.lp-mini-kpis div {
+  background: var(--axiom-paper);
+}
+
+.lp-mini small {
+  color: #8b8b83;
+}
+
+.lp-mini-kpis strong {
+  color: var(--axiom-ink);
+
+  font-family: Inter, sans-serif;
+}
+
+.lp-mini-charts {
+  background: var(--axiom-paper);
+}
+
+.lp-axis {
+  stroke: #d7d6ce;
+}
+
+.lp-ln {
+  stroke: var(--axiom-blue);
+}
+
+.lp-ln.c1 {
+  stroke: #22221e;
+}
+
+.lp-area {
+  fill: rgba(82,102,245,.08);
+}
+
+.lp-mini-signal {
+  margin: 0 16px 16px;
+
+  border:
+    1px solid rgba(82,102,245,.2);
+
+  background:
+    var(--axiom-blue-soft);
+}
+
+.lp-mini-signal span {
+  color: var(--axiom-blue);
+}
+
+.lp-mini-signal p {
+  color: var(--axiom-ink);
+}
+
+
+/* ------------------------------------------------------------
+   FLOW / STORY
+------------------------------------------------------------ */
+
+.lp-story,
+.lp-board-wrap,
+.lp-about {
+  background: var(--axiom-bg);
+
+  color: var(--axiom-ink);
+}
+
+.lp-sec-head {
+  max-width: 760px;
+}
+
+.lp-kicker {
+  color: #8b8b82;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: .14em;
+}
+
+.lp-sec-head h2 {
+  color: var(--axiom-ink);
+
+  font-family: Inter, sans-serif;
+
+  font-size:
+    clamp(42px, 5vw, 72px);
+
+  line-height: .96;
+
+  letter-spacing: -.07em;
+}
+
+.lp-sec-head h2 em {
+  color: var(--axiom-blue);
+
+  background: none;
+
+  -webkit-text-fill-color: initial;
+}
+
+
+/* ------------------------------------------------------------
+   STORY CARDS
+------------------------------------------------------------ */
+
+.lp-step {
+  border-color: var(--axiom-line);
+
+  background: transparent;
+
+  color: var(--axiom-muted);
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.lp-step:hover {
+  color: var(--axiom-ink);
+
+  transform: translateX(5px);
+}
+
+.lp-step.on {
+  background: var(--axiom-paper);
+
+  border-color: var(--axiom-line);
+
+  color: var(--axiom-ink);
+
+  box-shadow:
+    0 12px 35px rgba(20,20,15,.055);
+}
+
+.lp-step span {
+  color: #a1a199;
+}
+
+.lp-step h3 {
+  color: inherit;
+}
+
+
+/* ------------------------------------------------------------
+   STORY STAGE
+------------------------------------------------------------ */
+
+.lp-stage {
+  border:
+    1px solid var(--axiom-line);
+
+  border-radius: 24px;
+
+  background: var(--axiom-paper);
+
+  box-shadow:
+    0 25px 60px rgba(20,20,15,.06);
+}
+
+.lp-stage-label {
+  color: #8a8a82;
+}
+
+.lp-cap {
+  color: #74746d;
+}
+
+.lp-list li {
+  border-color: var(--axiom-soft);
+}
+
+.lp-list li b {
+  color: var(--axiom-ink);
+}
+
+.lp-list li span {
+  color: var(--axiom-muted);
+}
+
+
+/* ------------------------------------------------------------
+   INVESTIGATION BOARD
+------------------------------------------------------------ */
+
+.lp-board {
+  position: relative;
+
+  border:
+    1px solid var(--axiom-line);
+
+  border-radius: 26px;
+
+  background:
+    #eeede6;
+
+  box-shadow:
+    0 25px 65px rgba(20,20,15,.06);
+
+  color: var(--axiom-ink);
+}
+
+.lp-board-q {
+  border-color: var(--axiom-line);
+}
+
+.lp-board-q small {
+  color: #8a8a82;
+
+  font-family: "DM Mono", monospace;
+}
+
+.lp-board-q h3 {
+  color: var(--axiom-ink);
+}
+
+.lp-node {
+  background: var(--axiom-paper);
+
+  border:
+    1px solid var(--axiom-line);
+
+  box-shadow:
+    0 12px 28px rgba(20,20,15,.045);
+
+  color: var(--axiom-ink);
+}
+
+.lp-node h4 {
+  color: var(--axiom-ink);
+}
+
+.lp-node p {
+  color: var(--axiom-muted);
+}
+
+.lp-tag {
+  background: var(--axiom-blue-soft);
+
+  color: var(--axiom-blue);
+
+  border: 0;
+}
+
+.lp-note {
+  color: #999990;
+}
+
+
+/* ------------------------------------------------------------
+   ABOUT / CTA
+------------------------------------------------------------ */
+
+.lp-about {
+  border-top: 1px solid var(--axiom-line);
+}
+
+.lp-about h2,
+.lp-about h3 {
+  color: var(--axiom-ink);
+}
+
+.lp-about p {
+  color: var(--axiom-muted);
+}
+
+
+/* ------------------------------------------------------------
+   REMOVE OLD "CYBER" FEEL
+------------------------------------------------------------ */
+
+.lp *,
+.lp *::before,
+.lp *::after {
+  text-shadow: none;
+}
+
+.lp .glass,
+.lp .glass-card {
+  background: var(--axiom-paper);
+  border-color: var(--axiom-line);
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+
+  .lp-hero {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+    padding-top: 125px;
+  }
+
+  .lp-mini {
+    transform: none;
+
+    animation: none;
+  }
+
+  .lp-mini:hover {
+    transform: translateY(-3px);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .lp-nav {
+    width: calc(100% - 20px);
+  }
+
+  .lp-links {
+    display: none;
+  }
+
+  .lp-hero {
+    padding:
+      120px
+      18px
+      60px;
+  }
+
+  .lp-hero h1 {
+    font-size: 58px;
+  }
+
+  .lp-hero p {
+    font-size: 15px;
+  }
+
+  .lp-mini-kpis {
+    grid-template-columns: 1fr;
+  }
+
+}

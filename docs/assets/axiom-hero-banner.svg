@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBFBF8"/>
+      <stop offset="55%" stop-color="#F5F5F0"/>
+      <stop offset="100%" stop-color="#ECECE4"/>
+    </linearGradient>
+    <radialGradient id="blueGlow" cx="76%" cy="48%" r="42%">
+      <stop offset="0%" stop-color="#3B52F6" stop-opacity="0.16"/>
+      <stop offset="60%" stop-color="#3B52F6" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#3B52F6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#DCDCD3" stroke-width="0.7" stroke-opacity="0.65"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="420" rx="24" fill="url(#bgGrad)" stroke="#DCDCD3" stroke-width="2"/>
+  <rect width="1200" height="420" rx="24" fill="url(#grid)"/>
+  <rect width="1200" height="420" rx="24" fill="url(#blueGlow)"/>
+
+  <!-- Left Editorial Header -->
+  <g transform="translate(56, 58)">
+    <!-- Pill Eyebrow -->
+    <rect x="0" y="0" width="318" height="30" rx="15" fill="#FFFFFF" stroke="#DCDCD3" stroke-width="1.2"/>
+    <circle cx="18" cy="15" r="4.5" fill="#1F8A5C"/>
+    <text x="32" y="19" font-family="monospace" font-size="11" font-weight="600" fill="#141413" letter-spacing="1.2">AUTONOMOUS COMMERCE INTELLIGENCE</text>
+
+    <!-- Brand Mark + Title -->
+    <g transform="translate(0, 56)">
+      <rect x="0" y="14" width="6" height="16" rx="1.5" fill="#141413"/>
+      <rect x="9" y="7" width="6" height="23" rx="1.5" fill="#141413"/>
+      <rect x="18" y="0" width="6" height="30" rx="1.5" fill="#3B52F6"/>
+      <text x="34" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#141413" letter-spacing="-0.8">AXIOM</text>
+    </g>
+
+    <text x="0" y="142" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#141413" letter-spacing="-1.8">YOUR STORE IS TALKING.</text>
+    <text x="0" y="196" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#3B52F6" letter-spacing="-1.8">AXIOM LISTENS.</text>
+
+    <text x="0" y="236" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#6E6E68">
+      Real-time behavioral telemetry, purchase-intent scoring, live market radar,
+    </text>
+    <text x="0" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#6E6E68">
+      and autonomous revenue recovery in a closed-loop architecture.
+    </text>
+
+    <!-- Bottom Metric Strip -->
+    <g transform="translate(0, 286)">
+      <rect x="0" y="0" width="145" height="58" rx="12" fill="#FBFBF8" stroke="#DCDCD3"/>
+      <text x="14" y="21" font-family="monospace" font-size="10" fill="#6E6E68">SHOPPER #4821</text>
+      <text x="14" y="44" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#3B52F6">91% INTENT</text>
+
+      <rect x="158" y="0" width="145" height="58" rx="12" fill="#FBFBF8" stroke="#DCDCD3"/>
+      <text x="172" y="21" font-family="monospace" font-size="10" fill="#6E6E68">DROP-OFF RISK</text>
+      <text x="172" y="44" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#D6453A">78% HIGH</text>
+
+      <rect x="316" y="0" width="165" height="58" rx="12" fill="#FBFBF8" stroke="#DCDCD3"/>
+      <text x="330" y="21" font-family="monospace" font-size="10" fill="#6E6E68">PRICE DROP SIGNAL</text>
+      <text x="330" y="44" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#141413">-11.3% (₹3,899)</text>
+
+      <rect x="494" y="0" width="160" height="58" rx="12" fill="#E5F5ED" stroke="#1F8A5C" stroke-opacity="0.4"/>
+      <text x="508" y="21" font-family="monospace" font-size="10" font-weight="700" fill="#1F8A5C">ACTION EXECUTED</text>
+      <text x="508" y="44" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#1F8A5C">DELIVERED ✓</text>
+    </g>
+  </g>
+
+  <!-- Right 3D Orbital Commerce Network Illustration -->
+  <g transform="translate(915, 205)">
+    <ellipse cx="0" cy="0" rx="220" ry="115" fill="none" stroke="#DCDCD3" stroke-width="1.2" transform="rotate(-18)"/>
+    <ellipse cx="0" cy="0" rx="165" ry="150" fill="none" stroke="#3B52F6" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="5 5" transform="rotate(24)"/>
+
+    <!-- Network Edges -->
+    <path d="M -160 -40 Q -90 -110 -30 -85" fill="none" stroke="#3B52F6" stroke-width="2" stroke-opacity="0.65"/>
+    <path d="M -160 -40 Q -70 -20 -20 0" fill="none" stroke="#141413" stroke-width="1.8" stroke-opacity="0.5"/>
+    <path d="M -30 -85 Q 10 -40 -20 0" fill="none" stroke="#3B52F6" stroke-width="1.8" stroke-opacity="0.6"/>
+    <path d="M -20 0 Q 25 55 -35 90" fill="none" stroke="#C88A1E" stroke-width="2" stroke-opacity="0.7"/>
+    <path d="M -35 90 Q 45 70 85 15" fill="none" stroke="#3B52F6" stroke-width="2.2"/>
+    <path d="M 85 15 Q 130 -40 165 -65" fill="none" stroke="#3B52F6" stroke-width="2"/>
+    <path d="M 85 15 Q 145 55 180 85" fill="none" stroke="#1F8A5C" stroke-width="2.5"/>
+    <path d="M 165 -65 Q 185 10 180 85" fill="none" stroke="#1F8A5C" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- Nodes -->
+    <!-- Shopper -->
+    <g transform="translate(-160, -40)">
+      <circle r="9" fill="#141413"/>
+      <rect x="-52" y="-34" width="104" height="20" rx="6" fill="#141413"/>
+      <text x="0" y="-21" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#FFFFFF">SHOPPER #4821</text>
+    </g>
+
+    <!-- Search -->
+    <g transform="translate(-30, -85)">
+      <circle r="7" fill="#3B52F6"/>
+      <rect x="-56" y="-30" width="112" height="20" rx="6" fill="#FFFFFF" stroke="#DCDCD3"/>
+      <text x="0" y="-17" text-anchor="middle" font-family="monospace" font-size="10" font-weight="600" fill="#141413">SEARCH "jeans"</text>
+    </g>
+
+    <!-- Product -->
+    <g transform="translate(-20, 0)">
+      <circle r="8" fill="#3B52F6"/>
+      <rect x="-58" y="12" width="116" height="22" rx="6" fill="#FFFFFF" stroke="#DCDCD3"/>
+      <text x="0" y="26" text-anchor="middle" font-family="monospace" font-size="10" font-weight="600" fill="#141413">BLACK DENIM 4×</text>
+    </g>
+
+    <!-- Cart / Hesitation -->
+    <g transform="translate(-35, 90)">
+      <circle r="8" fill="#D6453A"/>
+      <rect x="-64" y="12" width="128" height="22" rx="6" fill="#FCECEB" stroke="#D6453A" stroke-opacity="0.4"/>
+      <text x="0" y="26" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#D6453A">HESITATION LOOP</text>
+    </g>
+
+    <!-- Intent Core -->
+    <g transform="translate(85, 15)">
+      <circle r="22" fill="#E9ECFF" stroke="#3B52F6" stroke-width="2"/>
+      <circle r="10" fill="#3B52F6"/>
+      <rect x="-50" y="-44" width="100" height="22" rx="6" fill="#3B52F6"/>
+      <text x="0" y="-30" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#FFFFFF">INTENT 91%</text>
+    </g>
+
+    <!-- Market Event -->
+    <g transform="translate(165, -65)">
+      <circle r="8" fill="#3B52F6"/>
+      <rect x="-64" y="-32" width="128" height="22" rx="6" fill="#E9ECFF" stroke="#3B52F6" stroke-opacity="0.5"/>
+      <text x="0" y="-18" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#3B52F6">PRICE DROP -11.3%</text>
+    </g>
+
+    <!-- Recovery Action -->
+    <g transform="translate(180, 85)">
+      <circle r="11" fill="#1F8A5C"/>
+      <rect x="-68" y="16" width="136" height="24" rx="6" fill="#1F8A5C"/>
+      <text x="0" y="31" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#FFFFFF">RECOVERY NUDGE ✓</text>
+    </g>
+  </g>
+</svg>
